@@ -1,0 +1,34 @@
+server:
+  port: 8080
+  application:
+    name: demo
+
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/springboot
+    username: postgres
+    password: 123456
+
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    content-type: text/html
+    cache: false                       #turn off the cache when developing, otherwise you can't see the real-time page!
+    prefix: classpath:/public/         #configure the page file path
+    suffix: .html                      #configure page default suffixes
+
+  flyway:
+    enabled: true
+    # disables cleaning of database tables
+    clean-disabled: false
+    # if the database is not an empty table, you need to set it to true, otherwise an error will be reported
+    baseline-on-migrate: true
+    baseline-version: 0
+    locations: classpath:migration
+
+logging:
+  level:
+    com:
+      dc:
+        pcasweb:
+          mapper: debug
